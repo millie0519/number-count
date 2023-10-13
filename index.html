@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>숫자 카운트</title>
+ </head>
+ <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+ <style>
+	.btn-minus,.btn-plus{background: none;border: none;cursor: pointer;padding-top: 10px;}
+	.count-wrap{display: flex; align-items: center; justify-content: center; margin-top: 100px;}
+	.numbox{position: relative; width: 80px; height: 46px; text-align: center; background: #dee67180;}
+	.num{
+		display: block;
+		width: 100%;
+		font-size: 35px;
+		text-align: center;
+	}
+	.txt-hide {
+		overflow: hidden;
+		border: 0;
+		position: absolute;
+		z-index: -1;
+		width: 1px;
+		height: 1px;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+	}
+	.btn-submit{display: block; margin: 30px auto 0;}
+ </style>
+ <body>
+	<div class="count-wrap">
+		<button type="button" class="btn-minus">
+			<svg width="20" height="20" viewbox="0 0 10 10" stroke-width="1" fill="none" stroke="#333" class="ico"><polyline points="7,1 3,5 7,9" /></svg>
+		</button>
+		<div class="numbox">
+			<span class="num"></span>
+			<input type="number" name="inputValue" id="inputValue" value="30" class="txt-hide">
+		</div>
+		<button type="button" class="btn-plus">
+			<svg width="20" height="20" viewbox="0 0 10 10" stroke-width="1" fill="none" stroke="#333" class="ico"><polyline points="3,1 7,5 3,9" /></svg>
+		</button>
+	</div>
+	<button type="button" class="btn-submit">제출</button>
+
+	<script>
+		var idx = 0;
+		var timeArr = [30, 45, 60, 90, 100];
+		var inputValue = document.getElementById('inputValue').value;        
+		$('.num').text(inputValue)
+
+		function numfn(){
+			inputValue = timeArr[idx]
+			$('.num').text(inputValue)
+		}
+
+		$('.btn-minus').click(function(){
+			if(idx > 0){
+				idx--;
+			}
+			numfn()
+		});
+		$('.btn-plus').click(function(){
+			if(idx < timeArr.length - 1){
+				idx++;
+			}
+			numfn()
+		});
+
+		$('.btn-submit').click(function(){
+			alert(inputValue)
+		});
+	</script>   
+</body>
+</html>
