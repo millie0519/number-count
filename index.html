@@ -10,16 +10,21 @@
  </head>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <style>
+	:root{
+		--size:40px;
+	}
 	.btn-minus,.btn-plus{background: none;border: none;cursor: pointer;padding-top: 10px;}
 	ul,li{list-style: none; margin: 0; padding: 0;}
 	.count-wrap{display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 100px;}
-	.numbox{position: relative; width: 80px; height: 46px; text-align: center; background: #dee67180; overflow: hidden;}
+	.numbox{position: relative; width: 80px; height: calc(var(--size) + 15px); text-align: center; background: #dee67180; overflow: hidden;}
 	.numbox ul{position: absolute; top: 0; left: 0; width: 100%; transition: top 0.4s;}
 	.num{
 		display: block;
 		width: 100%;
-		font-size: 35px;
+		font-size: var(--size);
 		text-align: center;
+		line-height: calc(var(--size) + 15px);
+		white-space: nowrap;
 	}
 	.txt-hide {
 		overflow: hidden;
@@ -53,7 +58,7 @@
 
 	<script>
 		var idx = 0;
-		var timeArr = ['30', '45', '60', '90', '100'];
+		var timeArr = [30, 45, 60, 90, 100];
 		var inputValue = document.getElementById('inputValue').value;
 
 		for(let i=0; i<timeArr.length; i++){
@@ -74,6 +79,9 @@
 		$('.btn-minus').click(function(){			
 			if(idx > -timeArr.length + 1){
 				idx--;
+				$(this).removeClass('unact')
+			}else{
+				$(this).addClass('unact')
 			}
 			numfn()
 		});
