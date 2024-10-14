@@ -14,6 +14,7 @@
 		--size:40px; /* 폰트사이즈 */
 	}
 	.btn-up,.btn-down{background: none;border: none;cursor: pointer;padding-top: 10px;}
+	.btn-up.unact,.btn-down.unact{opacity: 0.3;}
 	ul,li{list-style: none; margin: 0; padding: 0;}
 	.count-wrap{display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 100px;}
 	.numbox{position: relative; width: 80px; height: calc(var(--size) + 15px); text-align: center; background: #dee67180; overflow: hidden;}
@@ -49,7 +50,7 @@
 			<ul></ul>
 			<input type="number" name="inputValue" id="inputValue" value="30" class="txt-hide">
 		</div>
-		<button type="button" class="btn-down">
+		<button type="button" class="btn-down unact">
 			<span class="txt-hide">다음</span>
 			<svg width="20" height="20" viewbox="0 0 10 10" stroke-width="1" fill="none" stroke="#333" class="ico"><polyline points="1,3 5,7 9,3" /></svg>
 		</button>
@@ -66,7 +67,6 @@
 			$('.numbox ul').append(nums)
 		}
 
-
 		var mar = ($('.numbox ul').innerHeight())/timeArr.length;
 		function numfn(){
 			var ddd = mar*idx;
@@ -76,7 +76,7 @@
 			console.log(-idx)
 		}
 
-		$('.btn-up').click(function(){			
+		$('.btn-up').click(function(){ //증가
 			if(idx > -timeArr.length + 1){
 				idx--;
 				$(this).removeClass('unact')
@@ -85,7 +85,7 @@
 			}
 			numfn()
 		});
-		$('.btn-down').click(function(){
+		$('.btn-down').click(function(){ //감소
 			if(idx < 0){
 				idx++;
 			}
