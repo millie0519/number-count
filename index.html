@@ -75,12 +75,6 @@
 			// $('.num').text(inputValue)			
 		}
 
-		// function error(){
-		// 	if($(this).prop("disabled") == true){
-		// 		alert('error');
-		// 	}
-		// }
-
 		$('.btn-up').click(function(){ //증가
 			if(idx > -timeArr.length + 1){
 				idx--;
@@ -96,7 +90,6 @@
 				}
 			}
 			numfn();
-			//error();
 		});
 		$('.btn-down').click(function(){ //감소
 			if(idx < 0){
@@ -105,9 +98,11 @@
 				if(-idx > timeArr.length - 3){
 					$('.btn-up').removeClass('unact').attr("disabled", false);
 				}
+				if(-idx < 1){
+					$(this).addClass('unact').attr("disabled", true);
+				}
 			}
 			numfn();
-			//error();
 
 			console.log('-idx = ',-idx)
 			console.log('timeArr.length = ',timeArr.length)
