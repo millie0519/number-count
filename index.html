@@ -38,9 +38,39 @@
 		clip-path: inset(50%);
 	}
 	.btn-submit{display: block; margin: 30px auto 0;}
+
+
+
+	.input-wrap{margin-top: 50px;}
+	.input-wrap .group{margin: 20px 0;}
+	.input-wrap .group label{display: inline-block; width: 55px;}
+	.input-wrap .group input[type="text"]{width: 45px; height: 30px; text-indent: 5px; font-size: 17px;}
  </style>
 
  <body>
+	<div class="input-wrap">
+		<div class="group">
+			<label for="n-min">최소값</label>
+			<input type="text" id="n-min">
+		</div>
+		<div class="group">
+			<label for="n-max">최대값</label>
+			<input type="text" id="n-max">
+		</div>
+		<div class="group">
+			<label for="n-max">배수</label>
+			<input type="text" id="n-dif">
+		</div>
+
+		<button type="button" class="btn-send">전송</button>
+
+		<script>
+			function makeArr(){
+				
+			}
+		</script>
+	</div>
+
 	<div class="count-wrap">
 		<button type="button" class="btn-up">
 			<span class="txt-hide">이전</span>
@@ -104,8 +134,8 @@
 			}
 			numfn();
 
-			console.log('-idx = ',-idx)
-			console.log('timeArr.length = ',timeArr.length)
+			//console.log('-idx = ',-idx)
+			//console.log('timeArr.length = ',timeArr.length)
 		});
 
 		$('.btn-submit').click(function(){
