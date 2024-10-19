@@ -13,6 +13,13 @@
 	:root{
 		--size:40px; /* 폰트사이즈 */
 	}
+	@font-face {
+		font-family: 'LINESeedKR-Rg';
+		src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2');
+		font-weight: 400;
+		font-style: normal;
+	}
+	*{font-family: 'LINESeedKR-Rg';}
 	.btn-up,.btn-down{background: none;border: none;cursor: pointer;padding-top: 10px;}
 	.btn-up.unact,.btn-down.unact{opacity: 0.3; cursor: default;}
 	ul,li{list-style: none; margin: 0; padding: 0;}
@@ -37,8 +44,8 @@
 		clip: rect(1px, 1px, 1px, 1px);
 		clip-path: inset(50%);
 	}
-	.btn-submit{display: block; margin: 30px auto 0;}
-
+	.btn-submit{display: block; margin: 30px auto 0; width: 50px; height: 30px; font-size: 15px;}
+	.btn-send{display: block; width: 50px; height: 30px; font-size: 15px;}
 
 
 	.input-wrap{margin-top: 50px;}
