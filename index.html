@@ -65,15 +65,52 @@
 			<input type="text" id="n-max">
 		</div>
 		<div class="group">
-			<label for="n-max">배수</label>
+			<label for="n-dif">배수</label>
 			<input type="text" id="n-dif">
 		</div>
 
-		<button type="button" class="btn-send">전송</button>
+		<button type="button" onclick="makeArr();" class="btn-send">전송</button>
 
-		<script>
+		<script>			
+			function init(){
+				min = Number(document.getElementById('n-min').value);
+				max = Number(document.getElementById('n-max').value);
+				dif = Number(document.getElementById('n-dif').value);
+			}
+
+			$(".input-wrap input").keyup(function(){
+				$(this).val($(this).val().replace(/\s/g, "")); //공백 금지
+				$(this).val($(this).val().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi, "")); //특문 금지
+				$(this).val($(this).val().replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, "")); //한글 금지
+				$(this).val($(this).val().replace(/[a-zA-Z]/gi, "")); //영문 금지
+			})//keyup
+
 			function makeArr(){
+				err = 0;
+				timeArr2 = [];
+				init();
+				errorFn();
+
+				console.log('최소값 :',min)
+				console.log('최대값 :',max)
+				console.log('간격 :',dif)
 				
+				if(err < 1){
+					length = max/dif;
+					for(let i=0; i<length; i++){
+						var result = min+i*dif
+						timeArr2.push(result);
+						console.log(timeArr2)
+					}
+				}
+			}
+
+			function errorFn(){
+				if(min > max){
+					alert('최소값이 최대값보다 큽니다.');
+					$('#n-min').focus();
+					err = 1;
+				}				
 			}
 		</script>
 	</div>
