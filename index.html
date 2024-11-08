@@ -106,10 +106,6 @@
 			init();
 			errorFn();
 
-			console.log('최소값 :',min)
-			console.log('최대값 :',max)
-			console.log('간격 :',dif)
-			
 			if(err < 1){
 				length = max/dif;
 				for(let i=0; i<length; i++){
@@ -117,10 +113,9 @@
 					timeArr.push(result);
 					$('.numbox ul').append('<li class="num">'+timeArr[i]+'</li>');
 				}
+				$('.count-wrap').show();
 			}
-
-			$('.count-wrap').show();
-		}; 
+		};
 
 		function errorFn(){
 			if(min > max){
@@ -128,10 +123,17 @@
 				$('#n-min').focus();
 				err = 1;
 			}
+
+			$('.input-wrap input').each(function(){
+				if($(this).val() ==''){
+					alert('빈칸있음')
+					err = 1;
+				}
+			});
 		}
 
 		var idx = 0;
-		var inputValue = document.getElementById('inputValue').value;		
+		var inputValue = document.getElementById('inputValue').value;
 
 		function numfn(){
 			var mar = ($('.numbox ul').innerHeight())/timeArr.length;
@@ -160,7 +162,7 @@
 		$('.btn-down').click(function(){ //감소
 			if(idx < 0){
 				idx++;
-				
+
 				if(-idx > timeArr.length - 3){
 					$('.btn-up').removeClass('unact').attr("disabled", false);
 				}
@@ -172,7 +174,7 @@
 		});
 
 		$('.btn-submit').click(function(){
-			alert(inputValue);			
+			alert(inputValue);
 		});
 
 		$(".input-wrap input").keyup(function(){
